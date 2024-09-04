@@ -12,6 +12,7 @@ import com.almasb.fxgl.entity.components.CollidableComponent;
 import com.almasb.fxgl.physics.BoundingShape;
 import com.almasb.fxgl.texture.AnimatedTexture;
 import com.almasb.fxgl.texture.AnimationChannel;
+import de.dywebstudio.tanks.components.EnemyComponent;
 import de.dywebstudio.tanks.components.TankComponent;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -25,7 +26,7 @@ public class TankEntityFactory implements EntityFactory {
     public Entity newPlayer(SpawnData data) {
         return FXGL.entityBuilder(data)
                 .type(GameType.PLAYER)
-                .viewWithBBox("tanks/H1U.png")
+                .viewWithBBox("tanks/player.png")
                 .with(new TankComponent())
                 .with(new CollidableComponent(true))
                 .build();
@@ -84,6 +85,16 @@ public class TankEntityFactory implements EntityFactory {
                 .build();
     }
 
+    @Spawns("flag")
+    public Entity newFlag(SpawnData data) {
+        return FXGL.entityBuilder(data)
+                .type(GameType.FLAG)
+                .bbox(BoundingShape.box(2 * Config.GRID_SIZE, 2 * Config.GRID_SIZE))
+                .collidable()
+                .neverUpdated()
+                .build();
+    }
+
     @Spawns("border")
     public Entity newBorder(SpawnData data) {
         int width = data.<Integer>get("width");
@@ -98,10 +109,26 @@ public class TankEntityFactory implements EntityFactory {
     @Spawns("bullet")
     public Entity newBullet(SpawnData data) {
         Point2D bulletDirection = data.get("direction");
+
+        CollidableComponent collidableComponent = new CollidableComponent(true);
+        collidableComponent.addIgnoredType(data.<GameType>get("allyType"));
+
         return FXGL.entityBuilder(data)
                 .type(GameType.BULLET)
                 .viewWithBBox("items/bullet/norm.png")
                 .with(new ProjectileComponent(bulletDirection, Config.BULLET_SPEED))
+                .with(collidableComponent)
+                .build();
+    }
+
+    @Spawns("enemy")
+    public Entity newEnemy(SpawnData data) {
+        return FXGL.entityBuilder(data)
+                .type(GameType.ENEMY)
+                .viewWithBBox("tanks/T" + FXGL.random(1,6) + ".png")
+                .with(new TankComponent())
+                .with(new EnemyComponent())
+                .with(new CollidableComponent(true))
                 .build();
     }
 }

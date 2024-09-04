@@ -23,8 +23,18 @@ public class TankComponent extends Component {
     private LocalTimer shootTimer;
 
     private LazyValue<EntityGroup> entityGroupLazyValue
-            = new LazyValue<>(() -> FXGL.getGameWorld().getGroup(GameType.BRICK, GameType.BORDER, GameType.SEA, GameType.STEEL));
+            = new LazyValue<>(() -> FXGL.getGameWorld().getGroup(
+                    GameType.BRICK,
+            GameType.BORDER,
+            GameType.SEA,
+            GameType.STEEL,
+            GameType.PLAYER,
+            GameType.ENEMY
+    ));
 
+    public Direction getMoveDirection() {
+        return moveDirection;
+    }
     /**
      * called by add new component to entity
      */
@@ -83,6 +93,7 @@ public class TankComponent extends Component {
     public void move() {
         int len = (int) distance;
         List<Entity> blockerList = entityGroupLazyValue.get().getEntitiesCopy();
+        blockerList.remove(entity);
         int size = blockerList.size();
 
         boolean isCollision = false;
@@ -109,7 +120,8 @@ public class TankComponent extends Component {
         // next bullet
         if (shootTimer.elapsed(Config.SHOOT_DELAY)) {
             FXGL.spawn("bullet", new SpawnData(entity.getCenter().subtract(8.0/2.0, 10/2.0))
-                    .put("direction", moveDirection.getVector()));
+                    .put("direction", moveDirection.getVector())
+                    .put("allyType", entity.getType()));
         }
         shootTimer.capture();
     }

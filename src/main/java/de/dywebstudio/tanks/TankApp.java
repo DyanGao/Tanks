@@ -4,9 +4,13 @@ import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.app.GameSettings;
 import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.entity.Entity;
+import com.almasb.fxgl.physics.CollisionHandler;
+import de.dywebstudio.tanks.collisions.BulletEnemyHandler;
+import de.dywebstudio.tanks.collisions.BulletPlayerHandler;
 import de.dywebstudio.tanks.components.TankComponent;
 import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
+
 
 
 
@@ -35,7 +39,17 @@ public class TankApp extends GameApplication {
 //        FXGL.spawn("steel", 220, 250);
         FXGL.setLevelFromMap("level.tmx");
 
-        player = FXGL.spawn("player", 100, 50);
+        player = FXGL.spawn("player", 344, 424);
+
+        FXGL.spawn("enemy", 120, 120);
+        FXGL.spawn("enemy", 240, 240);
+        FXGL.spawn("enemy", 300, 300);
+    }
+
+    @Override
+    protected void initPhysics() {
+        FXGL.getPhysicsWorld().addCollisionHandler(new BulletEnemyHandler());
+        FXGL.getPhysicsWorld().addCollisionHandler(new BulletPlayerHandler());
     }
 
     @Override
