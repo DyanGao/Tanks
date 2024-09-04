@@ -8,8 +8,8 @@ open module de.dywebstudio.tanks {
 
 
 
-
     //opens de.dywebstudio.tanks to javafx.fxml;
+
 
     exports de.dywebstudio.tanks;
     exports de.dywebstudio.tanks.components;

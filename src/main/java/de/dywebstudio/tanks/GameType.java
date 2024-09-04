@@ -7,5 +7,6 @@ public enum GameType {
     ICE,
     SEA,
     STEEL,
-    BORDER
+    BORDER,
+    BULLET
 }

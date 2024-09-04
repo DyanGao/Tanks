@@ -2,6 +2,7 @@ package de.dywebstudio.tanks;
 
 import com.almasb.fxgl.dsl.EntityBuilder;
 import com.almasb.fxgl.dsl.FXGL;
+import com.almasb.fxgl.dsl.components.ProjectileComponent;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.entity.EntityFactory;
 import com.almasb.fxgl.entity.SpawnData;
@@ -15,6 +16,8 @@ import de.dywebstudio.tanks.components.TankComponent;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
+import javafx.geometry.Point2D;
+
 
 public class TankEntityFactory implements EntityFactory {
 
@@ -89,6 +92,16 @@ public class TankEntityFactory implements EntityFactory {
                 .type(GameType.BORDER)
                 .viewWithBBox(new Rectangle(width, height, Color.LIGHTGRAY))
                 .collidable()
+                .build();
+    }
+
+    @Spawns("bullet")
+    public Entity newBullet(SpawnData data) {
+        Point2D bulletDirection = data.get("direction");
+        return FXGL.entityBuilder(data)
+                .type(GameType.BULLET)
+                .viewWithBBox("items/bullet/norm.png")
+                .with(new ProjectileComponent(bulletDirection, Config.BULLET_SPEED))
                 .build();
     }
 }
