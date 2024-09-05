@@ -5,6 +5,7 @@ import com.almasb.fxgl.app.GameSettings;
 import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.physics.CollisionHandler;
+import de.dywebstudio.tanks.collisions.BulletBrickHandler;
 import de.dywebstudio.tanks.collisions.BulletEnemyHandler;
 import de.dywebstudio.tanks.collisions.BulletPlayerHandler;
 import de.dywebstudio.tanks.components.TankComponent;
@@ -48,8 +49,12 @@ public class TankApp extends GameApplication {
 
     @Override
     protected void initPhysics() {
+        // collision detection between bullets and enemies
         FXGL.getPhysicsWorld().addCollisionHandler(new BulletEnemyHandler());
+        // collision detection between bullets and Player
         FXGL.getPhysicsWorld().addCollisionHandler(new BulletPlayerHandler());
+        // collision detection between bullets and bricks
+        FXGL.getPhysicsWorld().addCollisionHandler(new BulletBrickHandler());
     }
 
     @Override

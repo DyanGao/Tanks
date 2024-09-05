@@ -1,5 +1,6 @@
 package de.dywebstudio.tanks.collisions;
 
+import com.almasb.fxgl.dsl.components.HealthIntComponent;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.physics.CollisionHandler;
 import de.dywebstudio.tanks.GameType;
@@ -13,7 +14,11 @@ public class BulletPlayerHandler extends CollisionHandler {
 
     @Override
     protected void onCollisionBegin(Entity bullet, Entity player) {
+        HealthIntComponent hpValues = player.getComponent(HealthIntComponent.class);
+        hpValues.damage(1);
+        if (hpValues.isZero()) {
+            player.removeFromWorld();
+        }
         bullet.removeFromWorld();
-        player.removeFromWorld();
     }
 }

@@ -2,6 +2,7 @@ package de.dywebstudio.tanks;
 
 import com.almasb.fxgl.dsl.EntityBuilder;
 import com.almasb.fxgl.dsl.FXGL;
+import com.almasb.fxgl.dsl.components.HealthIntComponent;
 import com.almasb.fxgl.dsl.components.ProjectileComponent;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.entity.EntityFactory;
@@ -12,6 +13,7 @@ import com.almasb.fxgl.entity.components.CollidableComponent;
 import com.almasb.fxgl.physics.BoundingShape;
 import com.almasb.fxgl.texture.AnimatedTexture;
 import com.almasb.fxgl.texture.AnimationChannel;
+import com.almasb.fxgl.ui.ProgressBar;
 import de.dywebstudio.tanks.components.EnemyComponent;
 import de.dywebstudio.tanks.components.TankComponent;
 import javafx.scene.paint.Color;
@@ -24,10 +26,28 @@ public class TankEntityFactory implements EntityFactory {
 
     @Spawns("player")
     public Entity newPlayer(SpawnData data) {
+        // set Health points for the player
+        HealthIntComponent hpComponent = new HealthIntComponent(5);
+        // current health points at the beginning
+        hpComponent.setValue(5);
+        // set progress bar for the player
+        ProgressBar hpProgressBar = new ProgressBar(false);
+        hpProgressBar.setLabelVisible(false);
+        hpProgressBar.setWidth(39);
+        hpProgressBar.setHeight(8);
+        hpProgressBar.setTranslateY(42);
+        hpProgressBar.setFill(Color.RED);
+
+        // max hp bind on hpProgressBar
+        hpProgressBar.maxValueProperty().bind(hpComponent.maxValueProperty());
+        // current hp bind on hpProgressBar
+        hpProgressBar.currentValueProperty().bind(hpComponent.valueProperty());
         return FXGL.entityBuilder(data)
                 .type(GameType.PLAYER)
                 .viewWithBBox("tanks/player.png")
+                .view(hpProgressBar)
                 .with(new TankComponent())
+                .with(hpComponent)
                 .with(new CollidableComponent(true))
                 .build();
     }
