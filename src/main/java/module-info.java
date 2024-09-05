@@ -5,7 +5,8 @@ open module de.dywebstudio.tanks {
     requires org.controlsfx.controls;
     requires com.almasb.fxgl.all;
     requires java.desktop;
-
+    requires java.prefs;
+    requires com.fasterxml.jackson.annotation;
 
 
     //opens de.dywebstudio.tanks to javafx.fxml;

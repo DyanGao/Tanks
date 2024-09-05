@@ -15,6 +15,7 @@ import com.almasb.fxgl.texture.AnimatedTexture;
 import com.almasb.fxgl.texture.AnimationChannel;
 import com.almasb.fxgl.ui.ProgressBar;
 import de.dywebstudio.tanks.components.EnemyComponent;
+import de.dywebstudio.tanks.components.FlagComponent;
 import de.dywebstudio.tanks.components.TankComponent;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -110,8 +111,8 @@ public class TankEntityFactory implements EntityFactory {
         return FXGL.entityBuilder(data)
                 .type(GameType.FLAG)
                 .bbox(BoundingShape.box(2 * Config.GRID_SIZE, 2 * Config.GRID_SIZE))
+                .with(new FlagComponent())
                 .collidable()
-                .neverUpdated()
                 .build();
     }
 
