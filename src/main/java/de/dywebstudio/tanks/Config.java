@@ -1,6 +1,8 @@
 package de.dywebstudio.tanks;
 
 
+import com.almasb.fxgl.dsl.FXGL;
+import javafx.geometry.Point2D;
 import javafx.util.Duration;
 
 
@@ -11,4 +13,11 @@ public interface Config {
     Duration SHOOT_DELAY = Duration.seconds(0.1);
 
 
+    Point2D[] SPAWN_ENEMY_POSITION = new Point2D[] {
+            new Point2D(30, 30),
+            new Point2D(240, 30),
+            new Point2D(500, 30)
+    };
+
+    int MAX_ENEMY_AMOUNT = 6;
 }

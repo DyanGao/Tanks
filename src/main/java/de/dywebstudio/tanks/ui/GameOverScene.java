@@ -5,7 +5,6 @@ import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.scene.SubScene;
 import com.almasb.fxgl.texture.Texture;
 
-import javafx.animation.Interpolator;
 import javafx.animation.TranslateTransition;
 
 
