@@ -10,6 +10,7 @@ import com.almasb.fxgl.time.TimerAction;
 import de.dywebstudio.tanks.collisions.*;
 import de.dywebstudio.tanks.components.TankComponent;
 import de.dywebstudio.tanks.ui.GameOverScene;
+import de.dywebstudio.tanks.ui.WinnerScene;
 import javafx.geometry.Point2D;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.input.KeyCode;
@@ -40,21 +41,23 @@ public class TankApp extends GameApplication {
     // store variables
     @Override
     protected void initGameVars(Map<String, Object> vars) {
+        // initialize variables for creating new enemy
         vars.put("spawnedEnemies",0);
+        // initialize variables for killed enemies
+        vars.put("destroyedEnemies",0);
+        // initialize variables for game level
+        vars.put("gameLevel", 1);
     }
 
-    @Override
-    protected void initGame() {
-        FXGL.getGameScene().setBackgroundColor(Color.BLACK);
-        FXGL.getGameWorld().addEntityFactory(new TankEntityFactory());
+    public void startGameLevel() {
+        // reset TimerAction
+        expireTimerAction(spawnedEnemiesTimerAction);
+        // reset the variables
+        FXGL.set("spawnedEnemies", 0);
+        FXGL.set("destroyedEnemies", 0);
 
-
-//        FXGL.spawn("brick", 50, 20);
-//        FXGL.spawn("grass", 20, 70);
-//        FXGL.spawn("ice", 260, 90);
-//        FXGL.spawn("sea", 180, 150);
-//        FXGL.spawn("steel", 220, 250);
-        FXGL.setLevelFromMap("level.tmx");
+        // load the maps
+        FXGL.setLevelFromMap("level" + FXGL.geti("gameLevel") + ".tmx");
 
         player = FXGL.spawn("player", 344, 424);
 
@@ -68,9 +71,7 @@ public class TankApp extends GameApplication {
         spawnedEnemiesTimerAction = FXGL.run(() -> {
             // the amount of spawnendEnemies to reach the maximum amount of spawnendEnemies, let the timeraction to expire
             if (FXGL.geti("spawnedEnemies") == Config.MAX_ENEMY_AMOUNT) {
-                if (spawnedEnemiesTimerAction != null && !spawnedEnemiesTimerAction.isExpired()) {
-                    spawnedEnemiesTimerAction.expire();
-                }
+                expireTimerAction(spawnedEnemiesTimerAction);
                 return;
             }
             Point2D pointPosition = FXGLMath.random(Config.SPAWN_ENEMY_POSITION).get();
@@ -89,6 +90,24 @@ public class TankApp extends GameApplication {
             }
         }, Duration.seconds(2));
 
+
+    }
+
+    @Override
+    protected void initGame() {
+        FXGL.getGameScene().setBackgroundColor(Color.BLACK);
+        FXGL.getGameWorld().addEntityFactory(new TankEntityFactory());
+
+        FXGL.getip("destroyedEnemies").addListener((ob, ov, nv) -> {
+            if(nv.intValue() == Config.MAX_ENEMY_AMOUNT) {
+                FXGL.runOnce(() -> {
+                    FXGL.getSceneService().pushSubScene(new WinnerScene());
+                }, Duration.seconds(1));
+
+            }
+        });
+
+        startGameLevel();
     }
 
     @Override
@@ -136,6 +155,12 @@ public class TankApp extends GameApplication {
 
     public void gameOver() {
         FXGL.getSceneService().pushSubScene(new GameOverScene());
+    }
+
+    private void expireTimerAction(TimerAction spawnedEnemiesTimerAction) {
+        if (spawnedEnemiesTimerAction != null && !spawnedEnemiesTimerAction.isExpired()) {
+            spawnedEnemiesTimerAction.expire();
+        }
     }
 
     public static void main(String[] args) {

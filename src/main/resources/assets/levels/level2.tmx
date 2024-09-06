@@ -10,72 +10,25 @@
   <object id="2" type="brick" gid="1" x="24" y="240" width="24" height="24"/>
   <object id="3" type="brick" gid="1" x="48" y="240" width="24" height="24"/>
   <object id="4" type="brick" gid="1" x="72" y="240" width="24" height="24"/>
-  <object id="5" type="brick" gid="1" x="96" y="240" width="24" height="24"/>
-  <object id="6" type="brick" gid="1" x="120" y="240" width="24" height="24"/>
-  <object id="7" type="brick" gid="1" x="120" y="264" width="24" height="24"/>
-  <object id="8" type="brick" gid="1" x="96" y="264" width="24" height="24"/>
   <object id="9" type="brick" gid="1" x="72" y="264" width="24" height="24"/>
   <object id="10" type="brick" gid="1" x="24" y="264" width="24" height="24"/>
   <object id="11" type="brick" gid="1" x="48" y="264" width="24" height="24"/>
-  <object id="95" type="steel" gid="4" x="408" y="96" width="24" height="24"/>
-  <object id="96" type="steel" gid="4" x="408" y="120" width="24" height="24"/>
-  <object id="97" type="steel" gid="4" x="432" y="96" width="24" height="24"/>
-  <object id="98" type="steel" gid="4" x="432" y="120" width="24" height="24"/>
-  <object id="99" type="steel" gid="4" x="456" y="96" width="24" height="24"/>
-  <object id="100" type="steel" gid="4" x="456" y="120" width="24" height="24"/>
-  <object id="103" type="grass" gid="5" x="144" y="240" width="24" height="24"/>
-  <object id="104" type="grass" gid="5" x="144" y="264" width="24" height="24"/>
-  <object id="105" type="grass" gid="5" x="168" y="240" width="24" height="24"/>
-  <object id="106" type="grass" gid="5" x="168" y="264" width="24" height="24"/>
-  <object id="107" type="grass" gid="5" x="192" y="240" width="24" height="24"/>
-  <object id="108" type="grass" gid="5" x="192" y="264" width="24" height="24"/>
-  <object id="109" type="grass" gid="5" x="216" y="240" width="24" height="24"/>
-  <object id="110" type="grass" gid="5" x="216" y="264" width="24" height="24"/>
   <object id="111" type="grass" gid="5" x="240" y="240" width="24" height="24"/>
   <object id="112" type="grass" gid="5" x="240" y="264" width="24" height="24"/>
   <object id="113" type="grass" gid="5" x="264" y="240" width="24" height="24"/>
   <object id="114" type="grass" gid="5" x="264" y="264" width="24" height="24"/>
   <object id="115" type="grass" gid="5" x="288" y="240" width="24" height="24"/>
   <object id="116" type="grass" gid="5" x="288" y="264" width="24" height="24"/>
-  <object id="145" type="sea" x="576" y="72" width="24" height="24"/>
-  <object id="146" type="sea" x="576" y="96" width="24" height="24"/>
-  <object id="147" type="sea" x="600" y="72" width="24" height="24"/>
-  <object id="148" type="sea" x="600" y="96" width="24" height="24"/>
   <object id="152" type="border" x="0" y="0" width="672" height="24"/>
   <object id="154" type="border" x="648" y="0" width="24" height="672"/>
   <object id="155" type="border" x="0" y="0" width="24" height="672"/>
   <object id="156" type="border" x="0" y="648" width="672" height="24"/>
-  <object id="158" type="ice" gid="3" x="216" y="384" width="24" height="24"/>
   <object id="159" type="ice" gid="3" x="240" y="384" width="24" height="24"/>
   <object id="160" type="ice" gid="3" x="264" y="384" width="24" height="24"/>
   <object id="161" type="ice" gid="3" x="288" y="384" width="24" height="24"/>
   <object id="162" type="ice" gid="3" x="288" y="408" width="24" height="24"/>
   <object id="165" type="ice" gid="3" x="264" y="408" width="24" height="24"/>
   <object id="166" type="ice" gid="3" x="240" y="408" width="24" height="24"/>
-  <object id="167" type="ice" gid="3" x="216" y="408" width="24" height="24"/>
-  <object id="171" type="sea" x="624" y="72" width="24" height="24"/>
-  <object id="172" type="sea" x="624" y="96" width="24" height="24"/>
-  <object id="173" type="brick" gid="1" x="120" y="96" width="24" height="24"/>
-  <object id="174" type="brick" gid="1" x="144" y="96" width="24" height="24"/>
-  <object id="175" type="brick" gid="1" x="168" y="96" width="24" height="24"/>
-  <object id="180" type="brick" gid="1" x="288" y="96" width="24" height="24"/>
-  <object id="181" type="brick" gid="1" x="312" y="96" width="24" height="24"/>
-  <object id="182" type="brick" gid="1" x="336" y="96" width="24" height="24"/>
-  <object id="183" type="brick" gid="1" x="360" y="96" width="24" height="24"/>
-  <object id="184" type="brick" gid="1" x="384" y="96" width="24" height="24"/>
-  <object id="185" type="brick" gid="1" x="384" y="120" width="24" height="24"/>
-  <object id="186" type="brick" gid="1" x="360" y="120" width="24" height="24"/>
-  <object id="187" type="brick" gid="1" x="312" y="120" width="24" height="24"/>
-  <object id="188" type="brick" gid="1" x="336" y="120" width="24" height="24"/>
-  <object id="189" type="brick" gid="1" x="288" y="120" width="24" height="24"/>
-  <object id="194" type="brick" gid="1" x="168" y="120" width="24" height="24"/>
-  <object id="195" type="brick" gid="1" x="144" y="120" width="24" height="24"/>
-  <object id="196" type="brick" gid="1" x="120" y="120" width="24" height="24"/>
-  <object id="215" type="steel" gid="4" x="432" y="240" width="24" height="24"/>
-  <object id="217" type="steel" gid="4" x="456" y="240" width="24" height="24"/>
-  <object id="218" type="steel" gid="4" x="480" y="240" width="24" height="24"/>
-  <object id="219" type="steel" gid="4" x="504" y="240" width="24" height="24"/>
-  <object id="220" type="steel" gid="4" x="528" y="240" width="24" height="24"/>
   <object id="221" type="steel" gid="4" x="552" y="240" width="24" height="24"/>
   <object id="222" type="steel" gid="4" x="576" y="240" width="24" height="24"/>
   <object id="223" type="steel" gid="4" x="600" y="240" width="24" height="24"/>
@@ -84,13 +37,6 @@
   <object id="226" type="steel" gid="4" x="600" y="264" width="24" height="24"/>
   <object id="227" type="steel" gid="4" x="576" y="264" width="24" height="24"/>
   <object id="228" type="steel" gid="4" x="552" y="264" width="24" height="24"/>
-  <object id="229" type="steel" gid="4" x="528" y="264" width="24" height="24"/>
-  <object id="230" type="steel" gid="4" x="504" y="264" width="24" height="24"/>
-  <object id="231" type="steel" gid="4" x="480" y="264" width="24" height="24"/>
-  <object id="232" type="steel" gid="4" x="456" y="264" width="24" height="24"/>
-  <object id="233" type="steel" gid="4" x="432" y="264" width="24" height="24"/>
-  <object id="234" type="steel" gid="4" x="408" y="264" width="24" height="24"/>
-  <object id="235" type="steel" gid="4" x="408" y="240" width="24" height="24"/>
   <object id="265" type="brick" gid="1" x="312" y="648" width="24" height="24"/>
   <object id="266" type="brick" gid="1" x="312" y="624" width="24" height="24"/>
   <object id="267" type="brick" gid="1" x="312" y="600" width="24" height="24"/>
@@ -119,16 +65,12 @@
   <object id="290" type="sea" x="96" y="408" width="24" height="24"/>
   <object id="291" type="sea" x="120" y="408" width="24" height="24"/>
   <object id="292" type="sea" x="144" y="408" width="24" height="24"/>
-  <object id="293" type="sea" x="168" y="408" width="24" height="24"/>
-  <object id="294" type="sea" x="192" y="408" width="24" height="24"/>
   <object id="295" type="sea" x="24" y="432" width="24" height="24"/>
   <object id="296" type="sea" x="48" y="432" width="24" height="24"/>
   <object id="298" type="sea" x="72" y="432" width="24" height="24"/>
   <object id="299" type="sea" x="96" y="432" width="24" height="24"/>
   <object id="300" type="sea" x="120" y="432" width="24" height="24"/>
   <object id="301" type="sea" x="144" y="432" width="24" height="24"/>
-  <object id="302" type="sea" x="168" y="432" width="24" height="24"/>
-  <object id="303" type="sea" x="192" y="432" width="24" height="24"/>
   <object id="305" type="grass" gid="5" x="480" y="384" width="24" height="24"/>
   <object id="306" type="grass" gid="5" x="480" y="408" width="24" height="24"/>
   <object id="307" type="grass" gid="5" x="504" y="384" width="24" height="24"/>
@@ -137,18 +79,6 @@
   <object id="310" type="grass" gid="5" x="528" y="408" width="24" height="24"/>
   <object id="311" type="grass" gid="5" x="552" y="384" width="24" height="24"/>
   <object id="312" type="grass" gid="5" x="552" y="408" width="24" height="24"/>
-  <object id="313" type="grass" gid="5" x="576" y="384" width="24" height="24"/>
-  <object id="314" type="grass" gid="5" x="576" y="408" width="24" height="24"/>
-  <object id="315" type="grass" gid="5" x="600" y="384" width="24" height="24"/>
-  <object id="316" type="grass" gid="5" x="600" y="408" width="24" height="24"/>
-  <object id="317" type="grass" gid="5" x="624" y="384" width="24" height="24"/>
-  <object id="318" type="grass" gid="5" x="624" y="408" width="24" height="24"/>
-  <object id="319" type="steel" gid="4" x="312" y="504" width="24" height="24"/>
-  <object id="320" type="steel" gid="4" x="312" y="528" width="24" height="24"/>
-  <object id="321" type="steel" gid="4" x="336" y="504" width="24" height="24"/>
-  <object id="322" type="steel" gid="4" x="336" y="528" width="24" height="24"/>
-  <object id="323" type="steel" gid="4" x="360" y="504" width="24" height="24"/>
-  <object id="324" type="steel" gid="4" x="360" y="528" width="24" height="24"/>
   <object id="325" type="steel" gid="4" x="384" y="504" width="24" height="24"/>
   <object id="326" type="steel" gid="4" x="384" y="528" width="24" height="24"/>
   <object id="327" type="steel" gid="4" x="408" y="504" width="24" height="24"/>
@@ -174,8 +104,6 @@
   <object id="352" type="brick" gid="1" x="216" y="528" width="24" height="24"/>
   <object id="353" type="brick" gid="1" x="240" y="528" width="24" height="24"/>
   <object id="354" type="brick" gid="1" x="264" y="528" width="24" height="24"/>
-  <object id="355" type="brick" gid="1" x="288" y="528" width="24" height="24"/>
-  <object id="356" type="brick" gid="1" x="288" y="552" width="24" height="24"/>
   <object id="357" type="brick" gid="1" x="264" y="552" width="24" height="24"/>
   <object id="358" type="brick" gid="1" x="240" y="552" width="24" height="24"/>
   <object id="359" type="brick" gid="1" x="216" y="552" width="24" height="24"/>

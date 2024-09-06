@@ -19,5 +19,8 @@ public interface Config {
             new Point2D(500, 30)
     };
 
+    // maximum of created enemies
     int MAX_ENEMY_AMOUNT = 6;
+    // maximum of game level
+    int MAX_GAME_LEVEL = 2;
 }

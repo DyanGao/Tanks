@@ -1,5 +1,6 @@
 package de.dywebstudio.tanks.collisions;
 
+import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.physics.CollisionHandler;
 import de.dywebstudio.tanks.GameType;
@@ -13,5 +14,6 @@ public class BulletEnemyHandler extends CollisionHandler {
     protected void onCollisionBegin(Entity bullet, Entity enemy) {
         bullet.removeFromWorld();
         enemy.removeFromWorld();
+        FXGL.inc("destroyedEnemies", 1);
     }
 }
