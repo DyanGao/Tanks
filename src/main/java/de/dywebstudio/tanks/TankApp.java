@@ -2,6 +2,7 @@ package de.dywebstudio.tanks;
 
 import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.app.GameSettings;
+import com.almasb.fxgl.app.scene.GameView;
 import com.almasb.fxgl.core.math.FXGLMath;
 import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.entity.Entity;
@@ -10,6 +11,7 @@ import com.almasb.fxgl.time.TimerAction;
 import de.dywebstudio.tanks.collisions.*;
 import de.dywebstudio.tanks.components.TankComponent;
 import de.dywebstudio.tanks.ui.GameOverScene;
+import de.dywebstudio.tanks.ui.InfoPane;
 import de.dywebstudio.tanks.ui.WinnerScene;
 import javafx.geometry.Point2D;
 import javafx.geometry.Rectangle2D;
@@ -60,6 +62,10 @@ public class TankApp extends GameApplication {
         FXGL.setLevelFromMap("level" + FXGL.geti("gameLevel") + ".tmx");
 
         player = FXGL.spawn("player", 344, 424);
+
+        // add InfoPane to Game
+        GameView gameView = new GameView(new InfoPane(), Integer.MAX_VALUE);
+        FXGL.getGameScene().addGameView(gameView);
 
         // spawnedEnemies at beginning: 3
         FXGL.spawn("enemy", 30, 30);
