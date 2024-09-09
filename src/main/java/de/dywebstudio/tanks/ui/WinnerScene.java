@@ -22,7 +22,7 @@ public class WinnerScene extends SubScene {
         text.setFont(Font.font(30));
         StackPane winnerPane = new StackPane(text);
         winnerPane.setPrefSize(FXGL.getAppWidth(), FXGL.getAppHeight());
-        winnerPane.setStyle("-fx-background-color: transparent");
+        winnerPane.setStyle("-fx-background-color: rgba(0, 0, 0, 0.5)");
         getContentRoot().getChildren().add(winnerPane);
 
         // pause after the winning of a level
