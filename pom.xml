@@ -80,7 +80,7 @@
                         <!-- Default configuration for running with: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>de.dywebstudio.tanks/de.dywebstudio.tanks.HelloApplication</mainClass>
+                            <mainClass>de.dywebstudio.tanks/de.dywebstudio.tanks.TankApp</mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>
                             <jlinkImageName>app</jlinkImageName>

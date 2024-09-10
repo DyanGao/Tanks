@@ -1,6 +1,5 @@
 package de.dywebstudio.tanks;
 
-import com.almasb.fxgl.dsl.EntityBuilder;
 import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.dsl.components.HealthIntComponent;
 import com.almasb.fxgl.dsl.components.ProjectileComponent;
@@ -8,7 +7,6 @@ import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.entity.EntityFactory;
 import com.almasb.fxgl.entity.SpawnData;
 import com.almasb.fxgl.entity.Spawns;
-import com.almasb.fxgl.entity.components.BoundingBoxComponent;
 import com.almasb.fxgl.entity.components.CollidableComponent;
 import com.almasb.fxgl.physics.BoundingShape;
 import com.almasb.fxgl.texture.AnimatedTexture;
@@ -22,9 +20,22 @@ import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 import javafx.geometry.Point2D;
 
-
+/**
+ * This class represents for creating entities per collective types in the game
+ * such a class for creating entities is called an entity factory
+ *
+ * Add a factory to the game world as follows:
+ * <code>getGameWorld().addEntityFactory(new TankEntityFactory());</code>
+ * Spawn an entity, using <code>getGameWorld().spawn("player");</code>,
+ * which in turn calls the factory methods annotated with <code>@Spawns("player!)</code>
+ */
 public class TankEntityFactory implements EntityFactory {
 
+    /**
+     * method, annotated with <code>@Spawns</code> can be used to spawn player.
+     * @param data
+     * @return <code>FXGL.entityBuilder()</code> to quickly set up a bunch of properties of player
+     */
     @Spawns("player")
     public Entity newPlayer(SpawnData data) {
         // set Health points for the player
@@ -53,6 +64,11 @@ public class TankEntityFactory implements EntityFactory {
                 .build();
     }
 
+    /**
+     * method, annotated with <code>@Spawns</code> to create new brick.
+     * @param data
+     * @return <code>FXGL.entityBuilder()</code> to quickly set up a bunch of properties of brick
+     */
     @Spawns("brick")
     public Entity newBrick(SpawnData data) {
         return FXGL.entityBuilder(data)
@@ -63,6 +79,11 @@ public class TankEntityFactory implements EntityFactory {
                 .build();
     }
 
+    /**
+     * Creates new grass
+     * @param data
+     * @return <code>FXGL.entityBuilder()</code> to quickly set up a bunch of properties of grass
+     */
     @Spawns("grass")
     public Entity newGrass(SpawnData data) {
         return FXGL.entityBuilder(data)
@@ -74,6 +95,11 @@ public class TankEntityFactory implements EntityFactory {
                 .build();
     }
 
+    /**
+     * Creates new ice ground
+     * @param data
+     * @return <code>FXGL.entityBuilder()</code> to quickly set up a bunch of properties of ice
+     */
     @Spawns("ice")
     public Entity newIce(SpawnData data) {
         return FXGL.entityBuilder(data)
@@ -84,8 +110,14 @@ public class TankEntityFactory implements EntityFactory {
                 .build();
     }
 
+    /**
+     * Creates a new sea
+     * @param data
+     * @return <code>FXGL.entityBuilder()</code> to quickly set up a bunch of properties of sea
+     */
     @Spawns("sea")
     public Entity newSea(SpawnData data) {
+        // create a animated sea entity
         AnimationChannel animationChannel = new AnimationChannel(
                 FXGL.image("items/sea_animation.png"), Duration.seconds(1), 2);
         AnimatedTexture texture = new AnimatedTexture(animationChannel);
@@ -96,6 +128,11 @@ public class TankEntityFactory implements EntityFactory {
                 .build();
     }
 
+    /**
+     * Creates new steel
+     * @param data
+     * @return <code>FXGL.entityBuilder()</code> to quickly set up a bunch of properties of steel
+     */
     @Spawns("steel")
     public Entity newSteel(SpawnData data) {
         return FXGL.entityBuilder(data)
@@ -106,6 +143,11 @@ public class TankEntityFactory implements EntityFactory {
                 .build();
     }
 
+    /**
+     * Creates flag
+     * @param data
+     * @return <code>FXGL.entityBuilder()</code> to quickly set up a bunch of properties of flag
+     */
     @Spawns("flag")
     public Entity newFlag(SpawnData data) {
         return FXGL.entityBuilder(data)
@@ -116,6 +158,11 @@ public class TankEntityFactory implements EntityFactory {
                 .build();
     }
 
+    /**
+     * Construct the game board
+     * @param data
+     * @return <code>FXGL.entityBuilder()</code> to quickly set up a bunch of properties of border
+     */
     @Spawns("border")
     public Entity newBorder(SpawnData data) {
         int width = data.<Integer>get("width");
@@ -127,6 +174,11 @@ public class TankEntityFactory implements EntityFactory {
                 .build();
     }
 
+    /**
+     * Creates bullets for the game
+     * @param data
+     * @return <code>FXGL.entityBuilder()</code> to quickly set up a bunch of properties of bullet
+     */
     @Spawns("bullet")
     public Entity newBullet(SpawnData data) {
         Point2D bulletDirection = data.get("direction");
@@ -142,6 +194,11 @@ public class TankEntityFactory implements EntityFactory {
                 .build();
     }
 
+    /**
+     * Creates enemies
+     * @param data
+     * @return <code>FXGL.entityBuilder()</code> to quickly set up a bunch of properties of enemy
+     */
     @Spawns("enemy")
     public Entity newEnemy(SpawnData data) {
         return FXGL.entityBuilder(data)
