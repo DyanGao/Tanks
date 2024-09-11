@@ -11,12 +11,26 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 
+
+/**
+ * This class describes the screen of the winner
+ */
 public class WinnerScene extends SubScene {
 
+    /**
+     * The duration of this Transition, if the value of duration is changed for a running PauseTransition,
+     * the animation has to be stopped and started again to pick up the new value.
+     */
     private final PauseTransition pauseTransition;
 
+    /**
+     * Constructor
+     */
     public WinnerScene() {
 
+        /**
+         * UI settings for this scene
+         */
         Text text = new Text("You win!");
         text.setFill(Color.RED);
         text.setFont(Font.font(30));
@@ -25,10 +39,14 @@ public class WinnerScene extends SubScene {
         winnerPane.setStyle("-fx-background-color: rgba(0, 0, 0, 0.5)");
         getContentRoot().getChildren().add(winnerPane);
 
-        // pause after the winning of a level
+        /**
+         * Pause after the winning of a level, duration of 2 milliseconds.
+         */
         pauseTransition = new PauseTransition(Duration.seconds(2));
 
-        // after pause transition to the next level
+        /**
+         * After pause transition to the next level
+         */
         pauseTransition.setOnFinished((event) -> {
             if(FXGL.geti("gameLevel") < Config.MAX_GAME_LEVEL) {
                 FXGL.getSceneService().popSubScene();
@@ -41,6 +59,9 @@ public class WinnerScene extends SubScene {
         });
     }
 
+    /**
+     * Called when the game is finished
+     */
     @Override
     public void onCreate() {
         pauseTransition.play();

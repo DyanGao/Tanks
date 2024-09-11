@@ -13,42 +13,82 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
-
+/**
+ * This class represents the layout of info panel, which of the right hand side
+ */
 public class InfoPane extends VBox {
 
-    // constructor
+    /**
+     * Constructor
+     */
     public InfoPane() {
-        // set background color
+        /**
+         * set background color
+         */
         setStyle("-fx-background-color: Gray");
-        // set spacing
+
+        /**
+         * Set spacing
+         */
         setSpacing(30);
-        // set infoPane width and height
+
+        /**
+         * Set infoPane width and height
+         */
         setPrefSize(6 * Config.GRID_SIZE, FXGL.getAppHeight());
-        // set infoPane to the right side of the window
+
+        /**
+         * Set infoPane to the right side of the screen
+         */
         setTranslateX(28 * Config.GRID_SIZE);
-        // center
+
+        /**
+         * Center
+         */
         setAlignment(Pos.TOP_CENTER);
 
-        // show the enemies' tank
+        /**
+         * Showcase for the enemies' tank
+         */
         TilePane tilePane = new TilePane();
-        // set margin
+
+        /**
+         * Set margin
+         */
         VBox.setMargin(tilePane, new Insets(30, 0, 0, 0));
-        // center
+        //
+        /**
+         * Center
+         */
         tilePane.setTileAlignment(Pos.CENTER);
-        // set horizontal gap
+
+        /**
+         * Set horizontal gap
+         */
         tilePane.setHgap(15);
-        // set vertical gap
+
+        /**
+         * Set vertical gap
+         */
         tilePane.setVgap(15);
-        // set gap between tanks
+
+        /**
+         * Set gap between tanks
+         */
         tilePane.setMaxWidth(25 * 2 + 15);
-        // set the box height for later more tanks
+
+        /**
+         * Set the box height for later more tanks
+         */
         tilePane.setPrefHeight(25*15 + 6*15 +15);
         for (int i = 0; i < Config.MAX_ENEMY_AMOUNT; i++) {
             tilePane.getChildren().add(FXGL.texture("ui/enemy_info.png"));
         }
         getChildren().add(tilePane);
 
-        // hide the tank if the tank in the game
+        /**
+         * hide the tank in showcase if the tank attend battle in the game
+         */
         FXGL.getip("spawnedEnemies").addListener((obj, ov, nv) -> {
             ObservableList<Node> nodes = tilePane.getChildren();
             for (int i = nodes.size() - 1; i >= Config.MAX_ENEMY_AMOUNT - nv.intValue(); i--) {
@@ -56,18 +96,23 @@ public class InfoPane extends VBox {
             }
         });
 
-        // add the level image and level text
+        /**
+         * Add the level image and level text
+         */
         Texture texture = FXGL.texture("ui/levelFlag.png");
         Text text = new Text("" + FXGL.geti("gameLevel"));
         text.setFont(Font.font(25));
 
-
-        // to show the game level
+        /**
+         * To show the current game level
+         */
         HBox levelBox = new HBox(texture, text);
         levelBox.setMaxWidth(70);
         levelBox.setAlignment(Pos.BOTTOM_CENTER);
 
-        // add levelBox to the infoPane
+        /**
+         * Add levelBox to the infoPane
+         */
         getChildren().add(levelBox);
     }
 }

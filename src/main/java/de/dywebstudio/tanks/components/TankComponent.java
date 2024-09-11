@@ -11,17 +11,37 @@ import de.dywebstudio.tanks.Config;
 import de.dywebstudio.tanks.Direction;
 import de.dywebstudio.tanks.GameType;
 
-
-
 import java.util.List;
 
+/**
+ * This component is used to add data and behavior to Tank.
+ */
 public class TankComponent extends Component {
 
+    /**
+     * Boolean that indicates whether the tank is currently moving or not
+     */
     private boolean isMoving = false;
+
+    /**
+     * Defines the moving distance
+     */
     private double distance;
+
+    /**
+     * The direction of the tank moving, default is UP
+     */
     private Direction moveDirection = Direction.UP;
+
+    /**
+     * A local timer to capture current shoot time
+     */
     private LocalTimer shootTimer;
 
+    /**
+     * A lazy value is only initialized when get is invoked.
+     * Subsequent calls to get returns the same value (instance).
+     */
     private LazyValue<EntityGroup> entityGroupLazyValue
             = new LazyValue<>(() -> FXGL.getGameWorld().getGroup(
                     GameType.BRICK,
@@ -32,11 +52,16 @@ public class TankComponent extends Component {
             GameType.ENEMY
     ));
 
+    /**
+     * getter for the movement
+     * @return moveDirection
+     */
     public Direction getMoveDirection() {
         return moveDirection;
     }
+
     /**
-     * called by add new component to entity
+     * Called by add new component to entity
      */
     @Override
     public void onAdded() {
@@ -45,14 +70,20 @@ public class TankComponent extends Component {
 
     /**
      * Called every frame _only_ in Play state
-     * @param tpf
+     * @param tpf - Time per frame
      */
     @Override
     public void onUpdate(double tpf) {
         isMoving = false;
+        /**
+         * Distance is calculated from the tpf and the tank speed
+         */
         distance = tpf * Config.TANK_SPEED;
     }
 
+    /**
+     * Called when the player is moving to up
+     */
     public void moveUp(){
         if (isMoving) {
             return;
@@ -62,6 +93,10 @@ public class TankComponent extends Component {
         moveDirection = Direction.UP;
         move();
     }
+
+    /**
+     * Called when the entity is moved to down direction
+     */
     public void moveDown(){
         if (isMoving) {
             return;
@@ -71,6 +106,10 @@ public class TankComponent extends Component {
         moveDirection = Direction.DOWN;
         move();
     }
+
+    /**
+     * Moves the left
+     */
     public void moveLeft(){
         if (isMoving) {
             return;
@@ -80,6 +119,10 @@ public class TankComponent extends Component {
         moveDirection = Direction.LEFT;
         move();
     }
+
+    /**
+     * Moves the right direction
+     */
     public void moveRight(){
         if (isMoving) {
             return;
@@ -90,8 +133,14 @@ public class TankComponent extends Component {
         move();
     }
 
+    /**
+     * Called when the tank is moved and avoids collision
+     */
     public void move() {
         int len = (int) distance;
+        /**
+         * List of the entities that avoid collisions with
+         */
         List<Entity> blockerList = entityGroupLazyValue.get().getEntitiesCopy();
         blockerList.remove(entity);
         int size = blockerList.size();
@@ -115,9 +164,16 @@ public class TankComponent extends Component {
         }
 
     }
+
+    /**
+     * Called when shooting
+     */
     public void shoot(){
         //System.out.println("Shooting");
-        // next bullet
+
+        /**
+         * Bullet shot one bullet after another bullet, delay between bullets
+         */
         if (shootTimer.elapsed(Config.SHOOT_DELAY)) {
             FXGL.spawn("bullet", new SpawnData(entity.getCenter().subtract(8.0/2.0, 10/2.0))
                     .put("direction", moveDirection.getVector())
