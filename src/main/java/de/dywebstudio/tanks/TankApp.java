@@ -69,7 +69,7 @@ public class TankApp extends GameApplication {
         /**
          * Set the title
          */
-        settings.setTitle("Tank");
+        settings.setTitle("Battle Tanks");
 
         /**
          * Set the version number

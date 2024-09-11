@@ -1,5 +1,7 @@
 # A FXGL GAME Project - Battle Tanks
 
+![Battle Tanks Screenshot](src/main/resources/screenshots/BattleTanks.png)
+
 ## Description
 This project is an action-packed, 2D tank combat game developed using the FXGL(JavaFX Game Library) framework.
 
