@@ -10,6 +10,8 @@ This project is an action-packed, 2D tank combat game developed using the FXGL(J
 - Maven
 - FXGL Framework (version 21.1)
 - JavaFX (version 22.0.1)
+- Tiled Map Editor (Version 1.11.0)
+
 
 ### Key Features include:
 
