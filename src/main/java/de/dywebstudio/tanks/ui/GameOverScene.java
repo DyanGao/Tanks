@@ -44,7 +44,7 @@ public class GameOverScene extends SubScene {
             texture.setTranslateY(0);
             FXGL.getGameController().gotoMainMenu();
         });
-        getContentRoot().getChildren().add(texture);;
+        getContentRoot().getChildren().add(texture);
     }
 
 

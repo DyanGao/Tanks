@@ -117,7 +117,7 @@ public class TankEntityFactory implements EntityFactory {
      */
     @Spawns("sea")
     public Entity newSea(SpawnData data) {
-        // create a animated sea entity
+        // create an animated sea entity
         AnimationChannel animationChannel = new AnimationChannel(
                 FXGL.image("items/sea_animation.png"), Duration.seconds(1), 2);
         AnimatedTexture texture = new AnimatedTexture(animationChannel);
